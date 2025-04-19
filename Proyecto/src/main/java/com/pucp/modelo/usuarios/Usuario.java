@@ -1,0 +1,187 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.pucp.modelo.usuarios;
+
+import com.pucp.modelo.notificaciones.Notificacion;
+import com.pucp.modelo.publicaciones.Comentario;
+import com.pucp.modelo.publicaciones.Publicacion;
+import com.pucp.modelo.reportes.Denuncia;
+import java.util.ArrayList;
+
+/**
+ *
+ * @author Axel
+ */
+public class Usuario {
+    //ATRIBUTOS
+    private int idUsuario;
+    private int codigoPUCP;
+    private String nombreUsuario;
+    private String contrasena;
+    private String nombre;
+    private String correo;
+    private ArrayList<Publicacion> publicaciones;
+    private ArrayList<Publicacion> favoritos;
+    private ArrayList<Comentario> comentarios;
+    private ArrayList<Notificacion> notificaciones;
+    private ArrayList<Denuncia> denuncias;
+    
+    //CONSTRUCTORES
+    public Usuario() {
+        publicaciones = new ArrayList<>();
+        favoritos = new ArrayList<>();
+        comentarios = new ArrayList<>();
+        notificaciones = new ArrayList<>();
+        denuncias = new ArrayList<>();
+    }
+    
+    public Usuario(int idUsuario, int codigoPUCP, String nombreUsuario, 
+            String contrasena, String nombre, String correo){
+        this.idUsuario = idUsuario;
+        this.codigoPUCP = codigoPUCP;
+        this.nombreUsuario = nombreUsuario;
+        this.contrasena = contrasena;
+        this.nombre = nombre;
+        this.correo = correo;
+        this.publicaciones = new ArrayList<>();
+        this.favoritos = new ArrayList<>();
+        this.comentarios = new ArrayList<>();
+        this.notificaciones = new ArrayList<>();
+        this.denuncias = new ArrayList<>();
+    }
+    
+    //Falta implementar el constructor copia para USUARIO
+    
+    //FUNCIONES DE LOS ARRAY LIST
+    public void agregarPublicacion(Publicacion publicacion) {
+        this.publicaciones.add(publicacion);
+    }
+    
+    public void eliminarPublicacion(Publicacion publicacion) {
+        this.publicaciones.remove(publicacion);
+    }
+    
+    public void agregarFavorito(Publicacion publicacion) {
+        this.favoritos.add(publicacion);
+    }
+    
+    public void eliminarFavorito(Publicacion publicacion) {
+        this.favoritos.remove(publicacion);
+    }
+    
+    public void agregarComentario(Comentario comentario) {
+        this.comentarios.add(comentario);
+    }
+    
+    public void eliminarComentario(Comentario comentario) {
+        this.comentarios.remove(comentario);
+    }
+    
+    public void agregarNotificacion(Notificacion notificacion) {
+        this.notificaciones.add(notificacion);
+    }
+    
+    public void eliminarNotificacion(Notificacion notificacion) {
+        this.notificaciones.remove(notificacion);
+    }
+    
+    public void agregarReporte(Denuncia denuncia) {
+        this.denuncias.add(denuncia);
+    }
+    
+    public void eliminarReporte(Denuncia denuncia) {
+        this.denuncias.remove(denuncia);
+    }
+
+    
+    //GETTERS & SETTERS
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public int getCodigoPUCP() {
+        return codigoPUCP;
+    }
+
+    public void setCodigoPUCP(int codigoPUCP) {
+        this.codigoPUCP = codigoPUCP;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public ArrayList<Publicacion> getPublicaciones() {
+        return publicaciones;
+    }
+
+    public void setPublicaciones(ArrayList<Publicacion> publicaciones) {
+        this.publicaciones = publicaciones;
+    }
+
+    public ArrayList<Publicacion> getFavoritos() {
+        return favoritos;
+    }
+
+    public void setFavoritos(ArrayList<Publicacion> favoritos) {
+        this.favoritos = favoritos;
+    }
+
+    public ArrayList<Comentario> getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(ArrayList<Comentario> comentarios) {
+        this.comentarios = comentarios;
+    }
+
+    public ArrayList<Notificacion> getNotificaciones() {
+        return notificaciones;
+    }
+
+    public void setNotificaciones(ArrayList<Notificacion> notificaciones) {
+        this.notificaciones = notificaciones;
+    }
+
+    public ArrayList<Denuncia> getDenuncia() {
+        return denuncias;
+    }
+
+    public void setDenuncia(ArrayList<Denuncia> denuncias) {
+        this.denuncias = denuncias;
+    }    
+}

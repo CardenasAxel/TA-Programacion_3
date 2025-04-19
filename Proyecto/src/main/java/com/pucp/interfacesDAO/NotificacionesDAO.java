@@ -4,10 +4,19 @@
  */
 package com.pucp.interfacesDAO;
 
+import com.pucp.modelo.notificaciones.Notificacion;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author SEBASTIAN
  */
-public class NotificacionesDAO {
+public interface NotificacionesDAO {
+    void insertar(Notificacion notificacion);
+    ArrayList<Notificacion> listarTodos();
+    Notificacion obtenerPorId(int id);
+    void actualizar(Notificacion notificacion);
+    void elminar(int id);
     
 }

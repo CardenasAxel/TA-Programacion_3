@@ -8,6 +8,6 @@ package com.pucp.da.reportes;
  *
  * @author Axel
  */
-public class ReporteCRUD {
+public class DenunciaCRUD {
     
 }

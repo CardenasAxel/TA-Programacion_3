@@ -7,7 +7,7 @@ package com.pucp.modelo.usuarios;
 import com.pucp.modelo.notificaciones.Notificacion;
 import com.pucp.modelo.publicaciones.Comentario;
 import com.pucp.modelo.publicaciones.Publicacion;
-import com.pucp.modelo.reportes.Denuncia;
+import com.pucp.modelo.denuncias.Denuncia;
 import java.util.ArrayList;
 
 /**
@@ -87,11 +87,11 @@ public class Usuario {
         this.notificaciones.remove(notificacion);
     }
     
-    public void agregarReporte(Denuncia denuncia) {
+    public void agregarDenuncia(Denuncia denuncia) {
         this.denuncias.add(denuncia);
     }
     
-    public void eliminarReporte(Denuncia denuncia) {
+    public void eliminarDenuncia(Denuncia denuncia) {
         this.denuncias.remove(denuncia);
     }
 
@@ -146,39 +146,23 @@ public class Usuario {
     }
 
     public ArrayList<Publicacion> getPublicaciones() {
-        return publicaciones;
-    }
-
-    public void setPublicaciones(ArrayList<Publicacion> publicaciones) {
-        this.publicaciones = publicaciones;
+        return new ArrayList<>(publicaciones);
     }
 
     public ArrayList<Publicacion> getFavoritos() {
-        return favoritos;
-    }
-
-    public void setFavoritos(ArrayList<Publicacion> favoritos) {
-        this.favoritos = favoritos;
+        return new ArrayList<>(favoritos);
     }
 
     public ArrayList<Comentario> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(ArrayList<Comentario> comentarios) {
-        this.comentarios = comentarios;
+        return new ArrayList<>(comentarios);
     }
 
     public ArrayList<Notificacion> getNotificaciones() {
-        return notificaciones;
-    }
-
-    public void setNotificaciones(ArrayList<Notificacion> notificaciones) {
-        this.notificaciones = notificaciones;
+        return new ArrayList<>(notificaciones);
     }
 
     public ArrayList<Denuncia> getDenuncia() {
-        return denuncias;
+        return new ArrayList<>(denuncias);
     }
 
     public void setDenuncia(ArrayList<Denuncia> denuncias) {

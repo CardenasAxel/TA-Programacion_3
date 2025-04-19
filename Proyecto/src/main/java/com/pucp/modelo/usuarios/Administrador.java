@@ -4,7 +4,7 @@
  */
 package com.pucp.modelo.usuarios;
 
-import com.pucp.modelo.reportes.Denuncia;
+import com.pucp.modelo.denuncias.Denuncia;
 import java.util.ArrayList;
 
 /**
@@ -55,11 +55,6 @@ public class Administrador {
     }
 
     public ArrayList<Denuncia> getAdminDenuncias() {
-        return adminDenuncias;
+        return new ArrayList<>(adminDenuncias);
     }
-
-    public void setAdminDenuncias(ArrayList<Denuncia> adminDenuncias) {
-        this.adminDenuncias = adminDenuncias;
-    }
-    
 }

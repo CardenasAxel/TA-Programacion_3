@@ -8,7 +8,7 @@ import com.pucp.modelo.categorias.Curso;
 import com.pucp.modelo.categorias.Especialidad;
 import com.pucp.modelo.categorias.Facultad;
 import com.pucp.modelo.notificaciones.Notificacion;
-import com.pucp.modelo.reportes.Denuncia;
+import com.pucp.modelo.denuncias.Denuncia;
 
 import java.util.ArrayList;
 
@@ -170,67 +170,40 @@ public class Publicacion {
     }
 
     public ArrayList<Comentario> getComentarios() {
-        return comentarios;
-    }
-
-    public void setComentarios(ArrayList<Comentario> comentarios) {
-        this.comentarios = comentarios;
+        return new ArrayList<>(comentarios);
     }
 
     public ArrayList<Curso> getPublicacionesCursos() {
-        return publicacionesCursos;
-    }
-
-    public void setPublicacionesCursos(ArrayList<Curso> publicacionesCursos) {
-        this.publicacionesCursos = publicacionesCursos;
+        return new ArrayList<>(publicacionesCursos);
     }
 
     public ArrayList<Especialidad> getPublicacionesEspecialidades() {
-        return publicacionesEspecialidades;
-    }
-
-    public void setPublicacionesEspecialidades(ArrayList<Especialidad> publicacionesEspecialidades) {
-        this.publicacionesEspecialidades = publicacionesEspecialidades;
+        return new ArrayList<>(publicacionesEspecialidades);
     }
 
     public ArrayList<Facultad> getPublicacionesFacultades() {
-        return publicacionesFacultades;
-    }
-
-    public void setPublicacionesFacultades(ArrayList<Facultad> publicacionesFacultades) {
-        this.publicacionesFacultades = publicacionesFacultades;
+        return new ArrayList<>(publicacionesFacultades);
     }
 
     public ArrayList<Notificacion> getNotificaciones() {
-        return notificaciones;
-    }
-
-    public void setNotificaciones(ArrayList<Notificacion> notificaciones) {
-        this.notificaciones = notificaciones;
+        return new ArrayList<>(notificaciones);
     }
 
     public ArrayList<Denuncia> getPublicacionDenuncias() {
-        return publicacionDenuncias;
+        return new ArrayList<>(publicacionDenuncias);
     }
-
-    public void setPublicacionDenuncias(ArrayList<Denuncia> publicacionDenuncias) {
-        this.publicacionDenuncias = publicacionDenuncias;
-    }
-
+    
     public Date getFechaPublicacion() {
         return fechaPublicacion;
-    }
-
-    public void setFechaPublicacion(Date fechaPublicacion) {
-        this.fechaPublicacion = fechaPublicacion;
     }
 
     public Image getImagen() {
         return imagen;
     }
     
-    public void setImagen(Image imagen) {
-        this.imagen = imagen;
+    //Se seteara con una url
+    public void setImagen(String rutaImagen) {
+        this.imagen =  cargarImagen(rutaImagen);
     }
 
     public String getRutaImagen() {
@@ -240,6 +213,5 @@ public class Publicacion {
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
     }
-    
     
 }

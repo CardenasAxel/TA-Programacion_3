@@ -9,5 +9,5 @@ package com.pucp.modelo.notificaciones;
  * @author Axel
  */
 public enum TipoNotificacion {
-    
+    GUARDADA, COMENTADA, REPORTADA
 }

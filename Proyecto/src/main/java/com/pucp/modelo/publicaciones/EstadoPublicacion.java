@@ -9,5 +9,5 @@ package com.pucp.modelo.publicaciones;
  * @author Axel
  */
 public enum EstadoPublicacion {
-    
+    VISIBLE, GUARDADO, RESTRINGIDO, OCULTO
 }

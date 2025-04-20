@@ -23,8 +23,8 @@ public class NotificacionCRUD implements NotificacionesDAO{
     
     @Override
     public void insertar(Notificacion notificacion){
-        String query = "INSERT INTO Notificacion(mensaje,tipo_notificacion,cantidad,fecha)"
-                + "values(?,?,?,?)";
+        String query = "INSERT INTO Notificacion(mensaje,tipoNotificacion,cantidad,fecha,activo)"
+                + "values(?,?,?,?,?)";
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);) {        
             setParametrosNotificacion(ps, notificacion);
@@ -44,7 +44,7 @@ public class NotificacionCRUD implements NotificacionesDAO{
     @Override
     public ArrayList<Notificacion> listarTodos(){
         ArrayList<Notificacion> notificaciones = new ArrayList<>();
-        String query = "SELECT idNotificacion,mensaje,tipo_notificacion,cantidad,fecha FROM Notificacion WHERE activo = 1";
+        String query = "SELECT idNotificacion,mensaje,tipoNotificacion,cantidad,fecha,activo FROM Notificacion WHERE activo = 1";
         try(Connection con  =DBManager.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);){
@@ -60,7 +60,7 @@ public class NotificacionCRUD implements NotificacionesDAO{
     
     @Override
     public Notificacion obtenerPorId(int id){
-        String query = "SELECT idNotificacion,mensaje,tipo_notificacion,cantidad,fecha FROM Notificacion WHERE idNotificacion = ?";
+        String query = "SELECT idNotificacion,mensaje,tipoNotificacion,cantidad,fecha,activo FROM Notificacion WHERE idNotificacion = ?";
         try (Connection conn = DBManager.getConnection(); 
              PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, id);
@@ -77,7 +77,7 @@ public class NotificacionCRUD implements NotificacionesDAO{
     
     @Override
     public void actualizar(Notificacion notificacion){
-        String query = "UPDATE Notificacion SET mesaje = ?, tipo_notificacion = ?, cantidad = ?, fecha = ?, activo = ? WHERE idNotificacion = ?";
+        String query = "UPDATE Notificacion SET mesaje = ?, tipoNotificacion = ?, cantidad = ?, fecha = ?, activo = ? WHERE idNotificacion = ?";
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);){
             setParametrosNotificacion(ps,notificacion);
@@ -106,13 +106,14 @@ public class NotificacionCRUD implements NotificacionesDAO{
         ps.setString(2, noti.getTipoNotificacion().name());
         ps.setInt(3, noti.getCantidad());
         ps.setDate(4, noti.getFecha());
+        ps.setBoolean(5, noti.isActivo());
     }
     
     private Notificacion mapaNotificacion(ResultSet rs) throws SQLException{
         Notificacion noti = new Notificacion();
         noti.setIdNotificacion(rs.getInt("idNotificacion"));
         noti.setMensaje(rs.getString("mensaje"));
-        noti.setTipoNotificacion(TipoNotificacion.valueOf(rs.getString("tipo_notificacion")));
+        noti.setTipoNotificacion(TipoNotificacion.valueOf(rs.getString("tipoNotificacion")));
         noti.setCantidad(rs.getInt("cantidad"));
         noti.setFecha(rs.getDate("fecha"));
         noti.setActivo(rs.getBoolean("activo"));

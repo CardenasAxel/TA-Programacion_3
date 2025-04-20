@@ -7,6 +7,8 @@ package com.pucp.da.publicaciones;
 import com.pucp.config.DBManager;
 import com.pucp.interfacesDAO.ComentarioDAO;
 import com.pucp.modelo.publicaciones.Comentario;
+import com.pucp.modelo.publicaciones.Publicacion;
+import com.pucp.modelo.usuarios.Usuario;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -22,8 +24,8 @@ public class ComentarioCRUD implements ComentarioDAO{
     
     @Override
     public void insertar(Comentario comentario){
-        String query = "INSERT INTO Comentario(contenido,valoracion,fecha,activo)"
-                + "values(?,?,?,?)";
+        String query = "INSERT INTO Comentario(contenido,valoracion,fecha,id_publicacion,id_usuario,activo)"
+                + "values(?,?,?,?,?,?)";
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);) {        
             setParametrosComentario(ps, comentario);
@@ -43,7 +45,7 @@ public class ComentarioCRUD implements ComentarioDAO{
     @Override
     public ArrayList<Comentario> listarTodos(){
         ArrayList<Comentario> comentarios = new ArrayList<>();
-        String query = "SELECT id_comentario,contenido,valoracion,fecha,activo FROM Comentario WHERE activo = 1";
+        String query = "SELECT id_comentario,contenido,valoracion,fecha,id_publicacion,id_usuario,activo FROM Comentario WHERE activo = 1";
         try(Connection con  =DBManager.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);){
@@ -59,7 +61,7 @@ public class ComentarioCRUD implements ComentarioDAO{
     
     @Override
     public Comentario obtenerPorId(int id){
-        String query = "SELECT id_comentario,contenido,valoracion,fecha,activo FROM Comentario WHERE id_comentario = ?";
+        String query = "SELECT id_comentario,contenido,valoracion,fecha,id_publicacion,id_usuario,activo FROM Comentario WHERE id_comentario = ?";
         try (Connection conn = DBManager.getConnection(); 
              PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, id);
@@ -76,11 +78,11 @@ public class ComentarioCRUD implements ComentarioDAO{
     
     @Override
     public void actualizar(Comentario notificacion){
-        String query = "UPDATE Comentario SET contenido = ?, valoracion = ?, fecha = ?, activo = ? WHERE id_comentario = ?";
+        String query = "UPDATE Comentario SET contenido = ?, valoracion = ?, fecha = ?, id_publicacion = ?, id_usuario = ?, activo = ? WHERE id_comentario = ?";
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);){
             setParametrosComentario(ps,notificacion);
-            ps.setInt(6,notificacion.getIdComentario());
+            ps.setInt(7,notificacion.getIdComentario());
             ps.executeUpdate();
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -104,15 +106,23 @@ public class ComentarioCRUD implements ComentarioDAO{
         ps.setString(1, comen.getContenido());
         ps.setInt(2, comen.getValoracion());
         ps.setDate(3, comen.getFecha());
-        ps.setBoolean(4, comen.isActivo());
+        ps.setInt(4, comen.getPublicacion().getIdPublicacion());
+        ps.setInt(5, comen.getComentador().getIdUsuario());
+        ps.setBoolean(6, comen.isActivo());
     }
     
     private Comentario mapaComentario(ResultSet rs) throws SQLException{
         Comentario comen = new Comentario();
+        Publicacion publi = new Publicacion();
+        Usuario usu = new Usuario();
         comen.setIdComentario(rs.getInt("id_comentario"));
         comen.setContenido(rs.getString("contenido"));
         comen.setValoracion(rs.getInt("valoracion"));
         comen.setFecha(rs.getDate("fecha"));
+        publi.setIdPublicacion(rs.getInt("id_publicacion"));
+        comen.setPublicacion(publi);
+        usu.setIdUsuario(rs.getInt("id_usuario"));
+        comen.setComentador(usu);
         comen.setActivo(rs.getBoolean("activo"));
         return comen;
     }

@@ -85,7 +85,7 @@ public class UsuarioCRUD implements UsuarioDAO{
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);){
             setParametrosUsuario(ps,usuario);
-            ps.setInt(6,usuario.getIdUsuario());
+            ps.setInt(8,usuario.getIdUsuario());
             ps.executeUpdate();
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -107,7 +107,7 @@ public class UsuarioCRUD implements UsuarioDAO{
         
     }
     
-        private void setParametrosUsuario(PreparedStatement ps, Usuario usu) throws SQLException{
+    private void setParametrosUsuario(PreparedStatement ps, Usuario usu) throws SQLException{
         ps.setInt(1, usu.getIdUsuario());
         ps.setInt(2, usu.getCodigoPUCP());
         ps.setString(3, usu.getNombreUsuario());
@@ -118,7 +118,7 @@ public class UsuarioCRUD implements UsuarioDAO{
         ps.setBoolean(8, usu.isActivo());
     }
     
-        private Usuario mapaUsuario(ResultSet rs) throws SQLException{
+    private Usuario mapaUsuario(ResultSet rs) throws SQLException{
         Usuario usu = new Usuario();
         usu.setIdUsuario(rs.getInt("id_usuario"));
         usu.setCodigoPUCP(rs.getInt("codigo_PUCP"));

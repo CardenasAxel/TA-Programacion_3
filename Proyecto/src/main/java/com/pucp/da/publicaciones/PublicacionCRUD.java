@@ -83,7 +83,7 @@ public class PublicacionCRUD implements PublicacionDAO{
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);){
             setParametrosPublicacion(ps,publicacion);
-            ps.setInt(6,publicacion.getIdPublicacion());
+            ps.setInt(7,publicacion.getIdPublicacion());
             ps.executeUpdate();
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -104,16 +104,16 @@ public class PublicacionCRUD implements PublicacionDAO{
         
     }
     
-    private void setParametrosPublicacion(PreparedStatement ps, Publicacion comen) throws SQLException{
-        ps.setString(1, comen.getTitulo());
-        ps.setString(2, comen.getDescripcion());
-        ps.setString(3, comen.getEstado().name());
-        ps.setDate(4, comen.getFechaPublicacion());
-        ps.setString(5, comen.getRutaImagen());
-        ps.setBoolean(6, comen.isActivo());
+    private void setParametrosPublicacion(PreparedStatement ps, Publicacion publi) throws SQLException{
+        ps.setString(1, publi.getTitulo());
+        ps.setString(2, publi.getDescripcion());
+        ps.setString(3, publi.getEstado().name());
+        ps.setDate(4, publi.getFechaPublicacion());
+        ps.setString(5, publi.getRutaImagen());
+        ps.setBoolean(6, publi.isActivo());
     }
     
-        private Publicacion mapaPublicacion(ResultSet rs) throws SQLException{
+    private Publicacion mapaPublicacion(ResultSet rs) throws SQLException{
         Publicacion publi = new Publicacion();
         publi.setIdPublicacion(rs.getInt("id_publicacion"));
         publi.setTitulo(rs.getString("titulo"));

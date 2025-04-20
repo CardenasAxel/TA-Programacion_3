@@ -27,6 +27,7 @@ public class Usuario {
     private ArrayList<Comentario> comentarios;
     private ArrayList<Notificacion> notificaciones;
     private ArrayList<Denuncia> denuncias;
+    private EstadoUsuario estado;
     
     //CONSTRUCTORES
     public Usuario() {
@@ -38,13 +39,14 @@ public class Usuario {
     }
     
     public Usuario(int idUsuario, int codigoPUCP, String nombreUsuario, 
-            String contrasena, String nombre, String correo){
+            String contrasena, String nombre, String correo, EstadoUsuario estado){
         this.idUsuario = idUsuario;
         this.codigoPUCP = codigoPUCP;
         this.nombreUsuario = nombreUsuario;
         this.contrasena = contrasena;
         this.nombre = nombre;
         this.correo = correo;
+        this.estado = estado;
         this.publicaciones = new ArrayList<>();
         this.favoritos = new ArrayList<>();
         this.comentarios = new ArrayList<>();
@@ -165,7 +167,12 @@ public class Usuario {
         return new ArrayList<>(denuncias);
     }
 
-    public void setDenuncia(ArrayList<Denuncia> denuncias) {
-        this.denuncias = denuncias;
-    }    
+    public EstadoUsuario getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EstadoUsuario estado) {
+        this.estado = estado;
+    } 
+    
 }

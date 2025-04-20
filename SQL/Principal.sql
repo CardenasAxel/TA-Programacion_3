@@ -7,6 +7,8 @@ CREATE TABLE IF NOT EXISTS usuario (
   contrasena VARCHAR(255) NOT NULL,
   nombre VARCHAR(45) NOT NULL,
   correo VARCHAR(45) NOT NULL UNIQUE,
+  estado ENUM('HABILITADO', 'RESTRINGIDO') NOT NULL DEFAULT 'HABILITADO',
+  activo BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (id_usuario));
 
 #PUBLICACIONES (TERCERO)
@@ -18,6 +20,7 @@ CREATE TABLE IF NOT EXISTS publicacion (
   fecha_publicacion DATE NOT NULL,
   ruta_imagen VARCHAR(255), #NO SE ALMACENA LA IMAGEN
   id_usuario INT NOT NULL,
+  activo BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (id_publicacion),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario));
  
@@ -38,6 +41,7 @@ CREATE TABLE IF NOT EXISTS comentario (
   contenido VARCHAR(150) NOT NULL,
   valoracion INT NOT NULL,
   fecha DATE NOT NULL,
+  activo BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (id_comentario),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario),
   FOREIGN KEY (id_publicacion) REFERENCES publicacion(id_publicacion));
@@ -46,16 +50,19 @@ CREATE TABLE IF NOT EXISTS comentario (
 CREATE TABLE IF NOT EXISTS curso (
   id_curso INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(45) NOT NULL,
+  activo BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (id_curso));
     
 CREATE TABLE IF NOT EXISTS especialidad (
   id_especialidad INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(45) NOT NULL,
+  activo BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (id_especialidad));
     
 CREATE TABLE IF NOT EXISTS facultad (
   id_facultad INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(45) NOT NULL,
+  activo BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (id_facultad));
   #FALTA IMPLEMENTAR LAS TABLAS MUCHOS A MUCHOS
 
@@ -93,6 +100,8 @@ CREATE TABLE IF NOT EXISTS notificacion (
   mensaje VARCHAR(150) NOT NULL,
   tipo_not ENUM('GUARDADA', 'COMENTADA', 'REPORTADA') NOT NULL,
   cantidad INT NOT NULL,
+  fechaDATE NOT NULL,
+  activo BOOLEAN NOT NULL DEFAULT TRUE,
   PRIMARY KEY (id_notificacion),
   FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario));
   

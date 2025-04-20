@@ -12,14 +12,16 @@ public class Curso {
     //ATRIBUTOS
     private int idCurso;
     private String nombre;
+    private boolean activo;
 
     //CONSTRUCTORES
     public Curso() {
     }
 
-    public Curso(int idCurso, String nombre) {
+    public Curso(int idCurso, String nombre, boolean activo) {
         this.idCurso = idCurso;
         this.nombre = nombre;
+        this.activo = activo;
     }
 
     //GETTERS & SETTERS
@@ -37,6 +39,14 @@ public class Curso {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
     
     

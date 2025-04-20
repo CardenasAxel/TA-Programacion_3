@@ -80,7 +80,7 @@ public class ComentarioCRUD implements ComentarioDAO{
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);){
             setParametrosComentario(ps,notificacion);
-            ps.setInt(6,notificacion.getIdComentario());
+            ps.setInt(5,notificacion.getIdComentario());
             ps.executeUpdate();
         }catch(SQLException ex){
             ex.printStackTrace();

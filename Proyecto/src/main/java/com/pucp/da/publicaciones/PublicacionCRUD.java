@@ -83,7 +83,7 @@ public class PublicacionCRUD implements PublicacionDAO{
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);){
             setParametrosPublicacion(ps,publicacion);
-            ps.setInt(6,publicacion.getIdPublicacion());
+            ps.setInt(7,publicacion.getIdPublicacion());
             ps.executeUpdate();
         }catch(SQLException ex){
             ex.printStackTrace();
@@ -113,7 +113,7 @@ public class PublicacionCRUD implements PublicacionDAO{
         ps.setBoolean(6, comen.isActivo());
     }
     
-        private Publicacion mapaPublicacion(ResultSet rs) throws SQLException{
+    private Publicacion mapaPublicacion(ResultSet rs) throws SQLException{
         Publicacion publi = new Publicacion();
         publi.setIdPublicacion(rs.getInt("id_publicacion"));
         publi.setTitulo(rs.getString("titulo"));

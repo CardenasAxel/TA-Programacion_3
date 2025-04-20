@@ -12,15 +12,17 @@ public class Especialidad {
     //ATRIBUTOS
     private int idEspecialidad;
     private String nombre;
+    private boolean activo;
 	
     //CONSTRUCTORES
     public Especialidad(){
 
     }
 	
-    public Especialidad(int idEspecialidad, String nombre){
+    public Especialidad(int idEspecialidad, String nombre, boolean activo){
         this.idEspecialidad=idEspecialidad;
         this.nombre=nombre;
+        this.activo = activo;
     }
 	
     //GETTERS & SETTERS
@@ -38,6 +40,14 @@ public class Especialidad {
 
     public void setNombre(String nombre){
         this.nombre=nombre;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
   
 }

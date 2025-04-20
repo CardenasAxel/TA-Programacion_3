@@ -36,6 +36,7 @@ public class Publicacion {
     private ArrayList<Notificacion> notificaciones;
     private ArrayList<Denuncia> publicacionDenuncias;
     private Date fechaPublicacion;
+    private boolean activo;
     //Nuevo
     private Image imagen;
     private String rutaImagen;
@@ -51,7 +52,7 @@ public class Publicacion {
     
     
     public Publicacion(int idPublicacion, String titulo, String descripcion, 
-            EstadoPublicacion estado, Date fechaPublicacion, String rutaImagen) {
+            EstadoPublicacion estado, Date fechaPublicacion, String rutaImagen, boolean activo) {
         
         this.idPublicacion = idPublicacion;
         this.titulo = titulo;
@@ -64,6 +65,7 @@ public class Publicacion {
         this.notificaciones = new ArrayList<>();
         this.publicacionDenuncias = new ArrayList<>();
         this.fechaPublicacion = fechaPublicacion;
+        this.activo = activo;
         
         //Nuevo
         this.rutaImagen = rutaImagen;
@@ -196,6 +198,10 @@ public class Publicacion {
     public Date getFechaPublicacion() {
         return fechaPublicacion;
     }
+    
+    public void setFechaPublicacion(Date fechaPublicacion) {
+        this.fechaPublicacion = fechaPublicacion;
+    }
 
     public Image getImagen() {
         return imagen;
@@ -212,6 +218,14 @@ public class Publicacion {
 
     public void setRutaImagen(String rutaImagen) {
         this.rutaImagen = rutaImagen;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
     
 }

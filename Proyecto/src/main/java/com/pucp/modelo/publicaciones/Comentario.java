@@ -22,11 +22,12 @@ public class Comentario {
     public Comentario() {
     }
     
-    public Comentario(int idComentario, String contenido, int valoracion, Date fecha) {
+    public Comentario(int idComentario, String contenido, int valoracion, Date fecha, boolean activo) {
         this.idComentario = idComentario;
         this.contenido = contenido;
         this.valoracion = valoracion;
         this.fecha = fecha;
+        this.activo = activo;
     }
 
     //GETTERS & SETTERS

@@ -4,7 +4,7 @@
  */
 package com.pucp.interfacesDAO;
 
-import com.pucp.modelo.publicaciones.Comentario;
+import com.pucp.modelo.notificaciones.Notificacion;
 
 import java.util.ArrayList;
 
@@ -12,11 +12,12 @@ import java.util.ArrayList;
  *
  * @author SEBASTIAN
  */
-public interface ComentarioDAO {
+public interface NotificacionDAO {
     
-    void insertar(Comentario comentario);
-    ArrayList<Comentario> listarTodos();
-    Comentario obtenerPorId(int id);
-    void actualizar(Comentario comentario);
+    void insertar(Notificacion notificacion);
+    ArrayList<Notificacion> listarTodos();
+    Notificacion obtenerPorId(int id);
+    void actualizar(Notificacion notificacion);
     void eliminar(int id);
+    
 }

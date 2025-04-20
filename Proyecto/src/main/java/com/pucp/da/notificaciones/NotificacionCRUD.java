@@ -5,7 +5,7 @@
 package com.pucp.da.notificaciones;
 
 import com.pucp.config.DBManager;
-import com.pucp.interfacesDAO.NotificacionesDAO;
+import com.pucp.interfacesDAO.NotificacionDAO;
 import com.pucp.modelo.notificaciones.Notificacion;
 import com.pucp.modelo.notificaciones.TipoNotificacion;
 import java.util.ArrayList;
@@ -19,7 +19,7 @@ import java.sql.ResultSet;
  *
  * @author Axel
  */
-public class NotificacionCRUD implements NotificacionesDAO{
+public class NotificacionCRUD implements NotificacionDAO{
     
     @Override
     public void insertar(Notificacion notificacion){

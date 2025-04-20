@@ -23,12 +23,13 @@ public class Notificacion {
     public Notificacion() {
     }
     
-    public Notificacion(int idNotificacion, String mensaje, TipoNotificacion tipoNot, int cantidad, Date fecha) {
+    public Notificacion(int idNotificacion, String mensaje, TipoNotificacion tipoNot, int cantidad, Date fecha, boolean activo) {
         this.idNotificacion = idNotificacion;
         this.mensaje = mensaje;
         this.tipoNotificacion = tipoNot;
         this.cantidad = cantidad;
         this.fecha = fecha;
+        this.activo = activo;
     }
     
     //GETTERS & SETTERS

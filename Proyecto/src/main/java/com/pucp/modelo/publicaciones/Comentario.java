@@ -70,4 +70,11 @@ public class Comentario {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "Comentario{" + "idComentario=" + idComentario + ", contenido=" + contenido + ", valoracion=" + valoracion + ", fecha=" + fecha + ", activo=" + activo + '}';
+    }
+    
+    
 }

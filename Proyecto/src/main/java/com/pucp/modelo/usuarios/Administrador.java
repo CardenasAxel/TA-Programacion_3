@@ -57,4 +57,11 @@ public class Administrador {
     public ArrayList<Denuncia> getAdminDenuncias() {
         return new ArrayList<>(adminDenuncias);
     }
+
+    @Override
+    public String toString() {
+        return "Administrador{" + "claveMaestra=" + claveMaestra + ", idAdministrador=" + idAdministrador + ", adminDenuncias=" + adminDenuncias + '}';
+    }
+    
+    
 }

@@ -81,5 +81,11 @@ public class Notificacion {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    @Override
+    public String toString() {
+        return "Notificacion{" + "idNotificacion=" + idNotificacion + ", mensaje=" + mensaje + ", tipoNotificacion=" + tipoNotificacion + ", cantidad=" + cantidad + ", fecha=" + fecha + ", activo=" + activo + '}';
+    }
+    
     
 }

@@ -76,4 +76,10 @@ public class Denuncia {
         this.fechaDenuncia = fechaDenuncia;
     }   
 
+    @Override
+    public String toString() {
+        return "Denuncia{" + "idDenuncia=" + idDenuncia + ", autor=" + autor + ", denunciante=" + denunciante + ", motivo=" + motivo + ", fechaDenuncia=" + fechaDenuncia + '}';
+    }
+
+    
 }

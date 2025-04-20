@@ -39,5 +39,11 @@ public class Especialidad {
     public void setNombre(String nombre){
         this.nombre=nombre;
     }
+
+    @Override
+    public String toString() {
+        return "Especialidad{" + "idEspecialidad=" + idEspecialidad + ", nombre=" + nombre + '}';
+    }
   
+    
 }

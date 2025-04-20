@@ -46,7 +46,7 @@ public class PublicacionCRUD implements PublicacionDAO{
         
         ArrayList<Publicacion> publicaciones = new ArrayList<>();
         String query = "SELECT id_publicacion,titulo,descripcion,estado,fecha_publicacion,url_imagen,activo FROM Publicacion WHERE activo = 1";
-        try(Connection con  =DBManager.getConnection();
+        try(Connection con = DBManager.getConnection();
             Statement st = con.createStatement();
             ResultSet rs = st.executeQuery(query);){
             while(rs.next()){

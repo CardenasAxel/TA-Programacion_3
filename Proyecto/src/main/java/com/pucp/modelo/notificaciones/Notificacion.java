@@ -4,6 +4,8 @@
  */
 package com.pucp.modelo.notificaciones;
 
+import com.pucp.modelo.publicaciones.Publicacion;
+import com.pucp.modelo.usuarios.Usuario;
 import java.sql.Date;
 
 /**
@@ -18,18 +20,24 @@ public class Notificacion {
     private int cantidad;
     private Date fecha;
     private boolean activo;
-
+    
+    private Usuario notificador;
+    private Publicacion autor;
     //CONSTRUCTORES
     public Notificacion() {
+        this.notificador = new Usuario();
+        this.autor = new Publicacion();
     }
     
-    public Notificacion(int idNotificacion, String mensaje, TipoNotificacion tipoNot, int cantidad, Date fecha, boolean activo) {
+    public Notificacion(int idNotificacion, String mensaje, TipoNotificacion tipoNot, int cantidad, Date fecha, boolean activo, Usuario notificador, Publicacion autor) {
         this.idNotificacion = idNotificacion;
         this.mensaje = mensaje;
         this.tipoNotificacion = tipoNot;
         this.cantidad = cantidad;
         this.fecha = fecha;
         this.activo = activo;
+        this.notificador = notificador;
+        this.autor = autor;
     }
     
     //GETTERS & SETTERS
@@ -82,10 +90,27 @@ public class Notificacion {
         this.activo = activo;
     }
 
+    public Usuario getNotificador() {
+        return notificador;
+    }
+
+    public void setNotificador(Usuario notificador) {
+        this.notificador = notificador;
+    }
+
+    public Publicacion getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Publicacion autor) {
+        this.autor = autor;
+    }
+
     @Override
     public String toString() {
-        return "Notificacion{" + "idNotificacion=" + idNotificacion + ", mensaje=" + mensaje + ", tipoNotificacion=" + tipoNotificacion + ", cantidad=" + cantidad + ", fecha=" + fecha + ", activo=" + activo + '}';
+        return "Notificacion{" + "idNotificacion=" + idNotificacion + ", mensaje=" + mensaje + ", tipoNotificacion=" + tipoNotificacion + ", cantidad=" + cantidad + ", fecha=" + fecha + ", activo=" + activo + ", notificador=" + notificador + ", autor=" + autor + '}';
     }
+    
     
     
 }

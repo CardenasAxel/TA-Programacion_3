@@ -12,14 +12,16 @@ public class Facultad {
     //ATRIBUTOS
     private int idFacultad;
     private String nombre;
-
+    private boolean activo;
+    
     //CONSTRUCTORES
     public Facultad() {
     }
 
-    public Facultad(int idFacultad, String nombre) {
+    public Facultad(int idFacultad, String nombre, boolean activo) {
         this.idFacultad = idFacultad;
         this.nombre = nombre;
+        this.activo = activo;
     }
 
     //GETTERS & SETTERS
@@ -39,9 +41,18 @@ public class Facultad {
         this.nombre = nombre;
     }
 
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
     @Override
     public String toString() {
-        return "Facultad{" + "idFacultad=" + idFacultad + ", nombre=" + nombre + '}';
+        return "Facultad{" + "idFacultad=" + idFacultad + ", nombre=" + nombre + ", activo=" + activo + '}';
     }
+
     
 }

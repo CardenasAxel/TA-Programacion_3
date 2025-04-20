@@ -4,10 +4,120 @@
  */
 package com.pucp.da.notificaciones;
 
+import com.pucp.config.DBManager;
+import com.pucp.interfacesDAO.NotificacionesDAO;
+import com.pucp.modelo.notificaciones.Notificacion;
+import com.pucp.modelo.notificaciones.TipoNotificacion;
+import java.util.ArrayList;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 /**
  *
  * @author Axel
  */
-public class NotificacionCRUD {
+public class NotificacionCRUD implements NotificacionesDAO{
+    
+    @Override
+    public void insertar(Notificacion notificacion){
+        String query = "INSERT INTO Notificacion(mensaje,tipo_notificacion,cantidad,fecha)"
+                + "values(?,?,?,?)";
+        try(Connection con = DBManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);) {        
+            setParametrosNotificacion(ps, notificacion);
+            ps.executeUpdate(); 
+            //Traer el ultimo ID autogenerado
+            try(Statement st = con.createStatement();
+                ResultSet rskeys = st.executeQuery("select @@last_insert_id");){            
+                if(rskeys.next()){
+                    notificacion.setIdNotificacion(rskeys.getInt(1));
+                }
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    @Override
+    public ArrayList<Notificacion> listarTodos(){
+        ArrayList<Notificacion> notificaciones = new ArrayList<>();
+        String query = "SELECT idNotificacion,mensaje,tipo_notificacion,cantidad,fecha FROM Notificacion WHERE activo = 1";
+        try(Connection con  =DBManager.getConnection();
+            Statement st = con.createStatement();
+            ResultSet rs = st.executeQuery(query);){
+            while(rs.next()){
+                Notificacion notificacion = mapaNotificacion(rs);
+                notificaciones.add(notificacion);
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return notificaciones;
+    } 
+    
+    @Override
+    public Notificacion obtenerPorId(int id){
+        String query = "SELECT idNotificacion,mensaje,tipo_notificacion,cantidad,fecha FROM Notificacion WHERE idNotificacion = ?";
+        try (Connection conn = DBManager.getConnection(); 
+             PreparedStatement ps = conn.prepareStatement(query)) {
+            ps.setInt(1, id);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return mapaNotificacion(rs);
+                }
+            }
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+        return null;  
+    }
+    
+    @Override
+    public void actualizar(Notificacion notificacion){
+        String query = "UPDATE Notificacion SET mesaje = ?, tipo_notificacion = ?, cantidad = ?, fecha = ?, activo = ? WHERE idNotificacion = ?";
+        try(Connection con = DBManager.getConnection();
+            PreparedStatement ps = con.prepareStatement(query);){
+            setParametrosNotificacion(ps,notificacion);
+            ps.setInt(6,notificacion.getIdNotificacion());
+            ps.executeUpdate();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    @Override
+    public void eliminar(int id){
+        //Eliminar lógico
+        String query = "UPDATE Notificacion SET activo = 0 WHERE idNotificacion = ?";
+        try (Connection conn = DBManager.getConnection(); 
+             PreparedStatement ps = conn.prepareStatement(query)) {            
+             ps.setInt(1, id);
+             ps.executeUpdate();
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+    
+    private void setParametrosNotificacion(PreparedStatement ps, Notificacion noti) throws SQLException{
+        ps.setString(1, noti.getMensaje());
+        ps.setString(2, noti.getTipoNotificacion().name());
+        ps.setInt(3, noti.getCantidad());
+        ps.setDate(4, noti.getFecha());
+    }
+    
+    private Notificacion mapaNotificacion(ResultSet rs) throws SQLException{
+        Notificacion noti = new Notificacion();
+        noti.setIdNotificacion(rs.getInt("idNotificacion"));
+        noti.setMensaje(rs.getString("mensaje"));
+        noti.setTipoNotificacion(TipoNotificacion.valueOf(rs.getString("tipo_notificacion")));
+        noti.setCantidad(rs.getInt("cantidad"));
+        noti.setFecha(rs.getDate("fecha"));
+        noti.setActivo(rs.getBoolean("activo"));
+        return noti;
+    }
+    
     
 }

@@ -13,10 +13,11 @@ import java.util.ArrayList;
  * @author SEBASTIAN
  */
 public interface NotificacionesDAO {
+    
     void insertar(Notificacion notificacion);
     ArrayList<Notificacion> listarTodos();
     Notificacion obtenerPorId(int id);
     void actualizar(Notificacion notificacion);
-    void elminar(int id);
+    void eliminar(int id);
     
 }

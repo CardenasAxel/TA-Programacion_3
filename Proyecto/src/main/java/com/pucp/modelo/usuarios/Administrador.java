@@ -11,10 +11,9 @@ import java.util.ArrayList;
  *
  * @author Axel
  */
-public class Administrador {
+public class Administrador extends Usuario{
     //ATRIBUTOS
     private String claveMaestra;
-    private int idAdministrador;
     private ArrayList<Denuncia> adminDenuncias;
 	
     //CONSTRUCTORES
@@ -22,9 +21,11 @@ public class Administrador {
         this.adminDenuncias = new ArrayList<>();
     }
     
-    public Administrador(String claveMaestra, int idAdministrador, ArrayList<Denuncia> adminDenuncias) {
+    public Administrador(int idUsuario, int codigoPUCP, String nombreUsuario, String contrasena,
+            String nombre, String correo, EstadoUsuario estado, boolean activo, String claveMaestra, 
+            int idAdministrador, ArrayList<Denuncia> adminDenuncias) {
+        super(idUsuario, codigoPUCP, nombreUsuario, contrasena, nombre, correo, estado, activo);
         this.claveMaestra = claveMaestra;
-        this.idAdministrador = idAdministrador;
         this.adminDenuncias = new ArrayList<>();
     }
 
@@ -44,14 +45,6 @@ public class Administrador {
 
     public void setClaveMaestra(String claveMaestra) {
         this.claveMaestra = claveMaestra;
-    }
-
-    public int getIdAdministrador() {
-        return idAdministrador;
-    }
-
-    public void setIdAdministrador(int idAdministrador) {
-        this.idAdministrador = idAdministrador;
     }
 
     public ArrayList<Denuncia> getAdminDenuncias() {

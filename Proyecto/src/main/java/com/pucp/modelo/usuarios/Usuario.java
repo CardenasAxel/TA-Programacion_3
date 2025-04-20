@@ -28,6 +28,7 @@ public class Usuario {
     private ArrayList<Notificacion> notificaciones;
     private ArrayList<Denuncia> denuncias;
     private EstadoUsuario estado;
+    private boolean activo;
     
     //CONSTRUCTORES
     public Usuario() {
@@ -39,7 +40,7 @@ public class Usuario {
     }
     
     public Usuario(int idUsuario, int codigoPUCP, String nombreUsuario, 
-            String contrasena, String nombre, String correo, EstadoUsuario estado){
+            String contrasena, String nombre, String correo, EstadoUsuario estado, boolean activo){
         this.idUsuario = idUsuario;
         this.codigoPUCP = codigoPUCP;
         this.nombreUsuario = nombreUsuario;
@@ -52,6 +53,7 @@ public class Usuario {
         this.comentarios = new ArrayList<>();
         this.notificaciones = new ArrayList<>();
         this.denuncias = new ArrayList<>();
+        this.activo = activo;
     }
     
     //Falta implementar el constructor copia para USUARIO
@@ -174,5 +176,13 @@ public class Usuario {
     public void setEstado(EstadoUsuario estado) {
         this.estado = estado;
     } 
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
     
 }

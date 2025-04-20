@@ -5,6 +5,7 @@
 package com.pucp.modelo.denuncias;
 
 import com.pucp.modelo.publicaciones.Publicacion;
+import com.pucp.modelo.usuarios.Administrador;
 import com.pucp.modelo.usuarios.Usuario;
 import java.sql.Date;
 
@@ -19,20 +20,26 @@ public class Denuncia {
     private Usuario denunciante;
     private String motivo;
     private Date fechaDenuncia;
+    private Administrador admin;
+    private boolean activo;
     
     //CONSTRUCTORES
     public Denuncia() {
         this.autor = new Publicacion();
         this.denunciante = new Usuario();
+        this.admin = new Administrador();
     }
     
     //Falta implementar el constructor copia para PUBLICACION, USUARIO
-    public Denuncia(int idDenuncia, Publicacion autor, Usuario reportante, String motivo, Date fechaDenuncia) {
+    public Denuncia(int idDenuncia, Publicacion autor, Usuario reportante, String motivo, Date fechaDenuncia,
+            boolean activo, Administrador admin) {
         this.idDenuncia = idDenuncia;
         this.autor = autor;
         this.denunciante = reportante;
         this.motivo = motivo;
         this.fechaDenuncia = fechaDenuncia;
+        this.activo = activo;
+        this.admin = admin;
     }
     
     //GETTERS & SETTERS
@@ -76,10 +83,26 @@ public class Denuncia {
         this.fechaDenuncia = fechaDenuncia;
     }   
 
+    public Administrador getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Administrador admin) {
+        this.admin = admin;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
+
+    
     @Override
     public String toString() {
         return "Denuncia{" + "idDenuncia=" + idDenuncia + ", autor=" + autor + ", denunciante=" + denunciante + ", motivo=" + motivo + ", fechaDenuncia=" + fechaDenuncia + '}';
     }
-
     
 }

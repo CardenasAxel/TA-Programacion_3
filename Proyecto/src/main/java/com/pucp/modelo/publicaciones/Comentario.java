@@ -16,6 +16,7 @@ public class Comentario {
     private String contenido;
     private int valoracion;
     private Date fecha;
+    private boolean activo;
 
     //CONSTRUCTORES
     public Comentario() {
@@ -59,5 +60,13 @@ public class Comentario {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 }

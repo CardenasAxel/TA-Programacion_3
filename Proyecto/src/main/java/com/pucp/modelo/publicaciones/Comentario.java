@@ -4,6 +4,7 @@
  */
 package com.pucp.modelo.publicaciones;
 
+import com.pucp.modelo.usuarios.Usuario;
 import java.sql.Date;
 
 /**
@@ -17,17 +18,24 @@ public class Comentario {
     private int valoracion;
     private Date fecha;
     private boolean activo;
+    private Usuario comentador;
+    private Publicacion publicacion;
 
     //CONSTRUCTORES
     public Comentario() {
+        this.comentador = new Usuario();
+        this.publicacion = new Publicacion();
     }
     
-    public Comentario(int idComentario, String contenido, int valoracion, Date fecha, boolean activo) {
+    public Comentario(int idComentario, String contenido, int valoracion, Date fecha, boolean activo,
+            Usuario comentador, Publicacion publicacion) {
         this.idComentario = idComentario;
         this.contenido = contenido;
         this.valoracion = valoracion;
         this.fecha = fecha;
         this.activo = activo;
+        this.comentador = comentador;
+        this.publicacion = publicacion;
     }
 
     //GETTERS & SETTERS
@@ -70,4 +78,22 @@ public class Comentario {
     public void setActivo(boolean activo) {
         this.activo = activo;
     }
+
+    public Usuario getComentador() {
+        return comentador;
+    }
+
+    public void setComentador(Usuario comentador) {
+        this.comentador = comentador;
+    }
+
+    public Publicacion getPublicacion() {
+        return publicacion;
+    }
+
+    public void setPublicacion(Publicacion publicacion) {
+        this.publicacion = publicacion;
+    }
+    
+    
 }

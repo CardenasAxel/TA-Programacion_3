@@ -115,7 +115,7 @@ public class DenunciaCRUD implements DenunciaDAO{
         ps.setInt(3, denun.getDenunciante().getIdUsuario());
         ps.setString(4, denun.getMotivo());
         ps.setDate(5, denun.getFechaDenuncia());
-        ps.setInt(6,denun.getAdmin().getIdAdministrador());
+        ps.setInt(6,denun.getAdmin().getIdUsuario());
         ps.setBoolean(7, denun.isActivo());
     }
     
@@ -132,7 +132,7 @@ public class DenunciaCRUD implements DenunciaDAO{
         denun.setDenunciante(usu);
         denun.setMotivo(rs.getString("motivo"));
         denun.setFechaDenuncia(rs.getDate("fecha_reporte"));
-        admin.setIdAdministrador(rs.getInt("id_administrador"));
+        admin.setIdUsuario(rs.getInt("id_administrador"));
         denun.setAdmin(admin);
         denun.setActivo(rs.getBoolean("activo"));
         return denun;

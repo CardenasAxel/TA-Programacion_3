@@ -81,7 +81,7 @@ public class UsuarioCRUD implements UsuarioDAO{
 
     @Override
     public void actualizar(Usuario usuario) {
-        String query = "UPDATE Usuario SET codigo_PUCP = ?, nombre_usuario = ?, contrasena = ?, nombre = ?, correo = ?, estado = ? ,activo = ? WHERE id_publicacion = ?";
+        String query = "UPDATE Usuario SET codigo_PUCP = ?, nombre_usuario = ?, contrasena = ?, nombre = ?, correo = ?, estado = ? ,activo = ? WHERE id_usuario = ?";
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);){
             setParametrosUsuario(ps,usuario);
@@ -108,14 +108,13 @@ public class UsuarioCRUD implements UsuarioDAO{
     }
     
     private void setParametrosUsuario(PreparedStatement ps, Usuario usu) throws SQLException{
-        ps.setInt(1, usu.getIdUsuario());
-        ps.setInt(2, usu.getCodigoPUCP());
-        ps.setString(3, usu.getNombreUsuario());
-        ps.setString(4, usu.getContrasena());
-        ps.setString(5, usu.getNombre());
-        ps.setString(6, usu.getCorreo());
-        ps.setString(7, usu.getEstado().name());
-        ps.setBoolean(8, usu.isActivo());
+        ps.setInt(1, usu.getCodigoPUCP());
+        ps.setString(2, usu.getNombreUsuario());
+        ps.setString(3, usu.getContrasena());
+        ps.setString(4, usu.getNombre());
+        ps.setString(5, usu.getCorreo());
+        ps.setString(6, usu.getEstado().name());
+        ps.setBoolean(7, usu.isActivo());
     }
     
     private Usuario mapaUsuario(ResultSet rs) throws SQLException{

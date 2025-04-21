@@ -105,9 +105,8 @@ public class FacultadCRUD implements FacultadDAO{
     }
     
     private void setParametrosFacultad(PreparedStatement ps, Facultad facu) throws SQLException{
-        ps.setInt(1, facu.getIdFacultad());
-        ps.setString(2, facu.getNombre());
-        ps.setBoolean(3, facu.isActivo());
+        ps.setString(1, facu.getNombre());
+        ps.setBoolean(2, facu.isActivo());
     }
     
     private Facultad mapaFacultad(ResultSet rs) throws SQLException{

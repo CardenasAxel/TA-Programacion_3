@@ -106,9 +106,8 @@ public class CursoCRUD implements CursoDAO{
     }
     
     private void setParametrosCurso(PreparedStatement ps, Curso cur) throws SQLException{
-        ps.setInt(1, cur.getIdCurso());
-        ps.setString(2, cur.getNombre());
-        ps.setBoolean(3, cur.isActivo());
+        ps.setString(1, cur.getNombre());
+        ps.setBoolean(2, cur.isActivo());
     }
     
     private Curso mapaCurso(ResultSet rs) throws SQLException{

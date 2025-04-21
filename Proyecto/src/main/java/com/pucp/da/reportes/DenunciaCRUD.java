@@ -110,13 +110,12 @@ public class DenunciaCRUD implements DenunciaDAO{
     }
     
     private void setParametrosDenuncia(PreparedStatement ps, Denuncia denun) throws SQLException{
-        ps.setInt(1, denun.getIdDenuncia());
-        ps.setInt(2, denun.getAutor().getIdPublicacion());
-        ps.setInt(3, denun.getDenunciante().getIdUsuario());
-        ps.setString(4, denun.getMotivo());
-        ps.setDate(5, denun.getFechaDenuncia());
-        ps.setInt(6,denun.getAdmin().getIdUsuario());
-        ps.setBoolean(7, denun.isActivo());
+        ps.setInt(1, denun.getAutor().getIdPublicacion());
+        ps.setInt(2, denun.getDenunciante().getIdUsuario());
+        ps.setString(3, denun.getMotivo());
+        ps.setDate(4, denun.getFechaDenuncia());
+        ps.setInt(5,denun.getAdmin().getIdUsuario());
+        ps.setBoolean(6, denun.isActivo());
     }
     
     private Denuncia mapaDenuncia(ResultSet rs) throws SQLException{

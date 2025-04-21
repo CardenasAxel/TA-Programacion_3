@@ -60,7 +60,7 @@ public class EspecialidadCRUD implements EspecialidadDAO{
 
     @Override
     public Especialidad obtenerPorId(int id) {
-        String query = "SELECT id_especialidad,nombre,activo FROM Especialidad WHERE id_curso = ?";
+        String query = "SELECT id_especialidad,nombre,activo FROM Especialidad WHERE id_especialidad = ?";
         try (Connection conn = DBManager.getConnection(); 
              PreparedStatement ps = conn.prepareStatement(query)) {
             ps.setInt(1, id);
@@ -105,9 +105,8 @@ public class EspecialidadCRUD implements EspecialidadDAO{
     }
     
     private void setParametrosEspecialidad(PreparedStatement ps, Especialidad espe) throws SQLException{
-        ps.setInt(1, espe.getIdEspecialidad());
-        ps.setString(2, espe.getNombre());
-        ps.setBoolean(3, espe.isActivo());
+        ps.setString(1, espe.getNombre());
+        ps.setBoolean(2, espe.isActivo());
     }
     
     private Especialidad mapaEspecialidad(ResultSet rs) throws SQLException{

@@ -22,8 +22,7 @@ public class Administrador extends Usuario{
     }
     
     public Administrador(int idUsuario, int codigoPUCP, String nombreUsuario, String contrasena,
-            String nombre, String correo, EstadoUsuario estado, boolean activo, String claveMaestra, 
-            int idAdministrador, ArrayList<Denuncia> adminDenuncias) {
+            String nombre, String correo, EstadoUsuario estado, boolean activo, String claveMaestra) {
         super(idUsuario, codigoPUCP, nombreUsuario, contrasena, nombre, correo, estado, activo);
         this.claveMaestra = claveMaestra;
         this.adminDenuncias = new ArrayList<>();

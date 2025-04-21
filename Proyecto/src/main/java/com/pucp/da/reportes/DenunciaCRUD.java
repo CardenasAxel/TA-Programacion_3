@@ -83,7 +83,7 @@ public class DenunciaCRUD implements DenunciaDAO{
     @Override
     public void actualizar(Denuncia denuncia) {
         
-        String query = "UPDATE Publicacion SET autor = ?, reportante = ?, motivo = ?, fecha_reporte = ?, id_administrador = ?, activo = ? WHERE id_reporte = ?";
+        String query = "UPDATE Denuncia SET autor = ?, reportante = ?, motivo = ?, fecha_reporte = ?, id_administrador = ?, activo = ? WHERE id_reporte = ?";
         try(Connection con = DBManager.getConnection();
             PreparedStatement ps = con.prepareStatement(query);){
             setParametrosDenuncia(ps,denuncia);

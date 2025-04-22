@@ -18,6 +18,7 @@ public class Administrador extends Usuario{
 	
     //CONSTRUCTORES
     public Administrador() {
+        super();
         this.adminDenuncias = new ArrayList<>();
     }
     

@@ -3,8 +3,9 @@
  */
 
 package com.pucp.principal;
-import com.pucp.modelo.usuarios.Usuario;
-import com.pucp.modelo.usuarios.Administrator;
+import com.pucp.da.usuarios.UsuarioCRUD;
+import com.pucp.da.usuarios.AdministradorCRUD;
+import com.pucp.modelo.usuarios.*;
 /**
  *
  * @author Axel
@@ -13,10 +14,10 @@ public class Principal {
 
     public static void main(String[] args) {
         Usuario usuario1= new Usuario();
-        Administrator admin1= new Admin();
+        Usuario admin1 = new Administrador();
 
         UsuarioCRUD usuarioCRUD = new UsuarioCRUD();
-        AdministratorCRUD adminCRUD = new AdministratorCRUD();
+        AdministradorCRUD adminCRUD = new AdministradorCRUD();
         
         System.out.println("Hola davmos!");
     }

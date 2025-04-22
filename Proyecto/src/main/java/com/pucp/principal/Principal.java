@@ -13,7 +13,8 @@ import com.pucp.modelo.usuarios.*;
 public class Principal {
 
     public static void main(String[] args) {
-        Usuario usuario1= new Usuario();
+        Usuario usuario1= new Usuario(1, 20216287, "PedroGomez231", 
+            "pedrito1298", "Pedro", "a20216287@pucp.edu.pe", EstadoUsuario.activo, 1);
         Usuario admin1 = new Administrador();
 
         UsuarioCRUD usuarioCRUD = new UsuarioCRUD();

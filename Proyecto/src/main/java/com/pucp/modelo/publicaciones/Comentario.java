@@ -97,6 +97,6 @@ public class Comentario {
 
     @Override
     public String toString() {
-        return "Comentario{" + "idComentario=" + idComentario + ", contenido=" + contenido + ", valoracion=" + valoracion + ", fecha=" + fecha + ", activo=" + activo + ", comentador=" + comentador.getNombre() + ", publicacion=" + publicacion.getTitulo() + '}';
+        return "Comentario{" + "idComentario=" + idComentario + ", contenido=" + contenido + ", valoracion=" + valoracion + ", fecha=" + fecha + ", activo=" + activo + ", comentador=" + comentador.getIdUsuario()+ ", publicacion=" + publicacion.getIdPublicacion() + '}';
     }
 }

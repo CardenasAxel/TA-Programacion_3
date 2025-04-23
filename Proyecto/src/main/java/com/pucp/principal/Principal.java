@@ -34,6 +34,7 @@ public class Principal {
             Usuario user2 = usuarioCRUD.obtenerPorId(user1.getIdUsuario());
             System.out.println("Usuario insertado recientemente: ");
             System.out.println(user2);
+            System.out.println();
             
             //Actualizar datos
             user2.setCorreo("IloveDogs@gmail.com");

@@ -102,7 +102,7 @@ public class Denuncia {
     
     @Override
     public String toString() {
-        return "Denuncia{" + "idDenuncia=" + idDenuncia + ", autor=" + autor + ", denunciante=" + denunciante + ", motivo=" + motivo + ", fechaDenuncia=" + fechaDenuncia + '}';
+        return "Denuncia{" + "idDenuncia=" + idDenuncia + ", autor=" + autor.getTitulo() + ", denunciante=" + denunciante.getNombreUsuario() + ", motivo=" + motivo + ", fechaDenuncia=" + fechaDenuncia + '}';
     }
     
 }

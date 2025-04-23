@@ -53,7 +53,7 @@ public class Administrador extends Usuario{
 
     @Override
     public String toString() {
-        return "Administrador{" + "claveMaestra=" + claveMaestra + ", idAdministrador=" + super.getIdUsuario() + ", adminDenuncias=" + adminDenuncias + '}';
+        return "Administrador{" + "claveMaestra=" + claveMaestra + ", idAdministrador=" + super.getIdUsuario() + '}';
     }
     
     

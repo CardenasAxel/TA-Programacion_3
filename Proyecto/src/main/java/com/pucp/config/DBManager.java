@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Axel
+ * @author dav
  */
 public class DBManager {
     
